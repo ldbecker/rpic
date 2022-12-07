@@ -61,7 +61,14 @@ func main() {
 
 	dir := argz[len(argz)-2]
 	xnum := argz[len(argz)-1]
-	num, _ := strconv.Atoi(xnum)
+	num := 0
+	anum, err := strconv.Atoi(xnum)
+	if err != nil {
+		dir = xnum
+		num = 1
+	} else {
+		num = anum
+	}
 	rr := rand.New(rand.NewSource(time.Now().Unix()))
 
 	for i := 0; i < num; i++ {
